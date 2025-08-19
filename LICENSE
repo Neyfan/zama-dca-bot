@@ -1,27 +1,21 @@
+MIT License
 
----
+Copyright (c) 2025 Neyfan
 
-## 📄 docs/design.md
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-```markdown
-# Design
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Users create encrypted DCA intents in the browser (budget, frequency, timeframe). Intents are encrypted client-side with FHE and sent to the backend aggregator. The backend batches intents (default: 10 per batch), aggregates them homomorphically, decrypts only the total, and executes a single swap (USDC→ETH) on-chain. Distribution is proportional.
-
-### Components
-- **Frontend**: React UI (out of scope for demo).
-- **Backend**: Node.js aggregator (backend/src).
-- **FHE worker**: placeholder with encrypt/aggregate/decrypt functions.
-- **Contract**: BatchRouter.sol to accept swap & distribute tokens.
-
-### Flow
-1. Users send encrypted intents to backend.
-2. Backend queues until 10 intents are collected.
-3. Aggregation: ciphertexts → encrypted_total → decrypted_total.
-4. On-chain swap via BatchRouter.
-5. Distribution back to users.
-
-### Notes
-- Only aggregated amount revealed on-chain.
-- Default batch size = 10.
-- Future: integrate Threshold FHE for trust minimization.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
